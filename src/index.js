@@ -9,7 +9,7 @@ console.log('welcome to the store!');
 
 const item1 = await createItem('mouse', 20, 3);
 const item2 = await createItem('teclado', 150, 2);
-const item3 = await createItem('placa de video', 3000, 1);
+const item3 = await createItem('placa de video', 3589.50, 2);
 const item4 = await createItem('monitor', 890.55, 4);
 const item5 = await createItem('fone de ouvido', 50, 9);
 const item6 = await createItem('cabo hdmi', 19.98, 5);
@@ -21,6 +21,15 @@ const item6 = await createItem('cabo hdmi', 19.98, 5);
  await cartService.addItemToCart(myWishlist, item5);
     await cartService.addItemToCart(myWishlist, item6);
 
-console.log('Total a pagar ' , cartService.calculateTotal(myCart), 'reais');
+    //await cartService.deleteItemFromCart(myCart, item1.name);
+    //await cartService.deleteItemFromCart(myCart, item4.name);
+    ///await cartService.deleteItemFromCart(myCart, item3.name);
+    //await cartService.deleteItemFromCart(myCart, item2.name);
+
+    await cartService.displayCart(myCart);
+
+//console.log('Total a pagar ' , cartService.calculateTotal(myCart), 'reais');
 //console.log('Total a pagar ' , item2.subtotal() + item3.subtotal() + item1.subtotal(), 'reais');
-console.log('desejos: ',cartService.calculateTotal(myWishlist));
+//console.log('desejos: ',cartService.calculateTotal(myWishlist));
+//console.log( cartService.displayCart(myCart));
+//console.log( cartService.displayCart(myWishlist));
