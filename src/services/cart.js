@@ -29,10 +29,23 @@ async function deleteItemFromCart(userCart, name) {
 
 
 
-//limpar carrinho
+//remover item do carrinho
 
-async function clearCart(userCart) {
+async function removeItemCart(userCart, index) {
+
+   // const deleteIndex = index - 1;
+
+    if(index >= 0 && index < userCart.length){ {
+        userCart.splice(index, 1);
+        
+    }
+
+    
 }
+}
+
+
+
 
 
 //calcular o toral do carrinho
@@ -55,4 +68,4 @@ async function displayCart(userCart) {
 
 
 
-export { addItemToCart, deleteItemFromCart, clearCart, calculateTotal, displayCart }
+export { addItemToCart, deleteItemFromCart, removeItemCart, calculateTotal, displayCart }

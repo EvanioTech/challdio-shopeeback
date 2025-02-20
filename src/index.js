@@ -26,7 +26,12 @@ const item6 = await createItem('cabo hdmi', 19.98, 5);
     ///await cartService.deleteItemFromCart(myCart, item3.name);
     //await cartService.deleteItemFromCart(myCart, item2.name);
 
+    await cartService.removeItemCart(myCart, 1);
+
     await cartService.displayCart(myCart);
+
+
+    
 
 //console.log('Total a pagar ' , cartService.calculateTotal(myCart), 'reais');
 //console.log('Total a pagar ' , item2.subtotal() + item3.subtotal() + item1.subtotal(), 'reais');
