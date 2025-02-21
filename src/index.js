@@ -25,10 +25,14 @@ const item6 = await createItem('cabo hdmi', 19.98, 5);
     //await cartService.deleteItemFromCart(myCart, item4.name);
     ///await cartService.deleteItemFromCart(myCart, item3.name);
     //await cartService.deleteItemFromCart(myCart, item2.name);
+    
 
-    await cartService.removeItemCart(myCart, 1);
+   await cartService.removeItemCart(myCart, item1);
+   await cartService.removeItemCart(myCart, item2);
 
-    await cartService.displayCart(myCart);
+   await cartService.displayCart(myCart);
+    
+    
 
 
     

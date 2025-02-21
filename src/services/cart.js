@@ -31,39 +31,63 @@ async function deleteItemFromCart(userCart, name) {
 
 //remover item do carrinho
 
-async function removeItemCart(userCart, index) {
+async function removeItemCart(userCart, item) {
 
-   // const deleteIndex = index - 1;
+    // 1. encontrar o indice do item no carrinho
 
-    if(index >= 0 && index < userCart.length){ {
-        userCart.splice(index, 1);
-        
-    }
+    const indexFound = userCart.findIndex((p) => p.name === item.name);
 
+   // 2. se o item não existir, retornar o carrinho
+   if (indexFound == -1) {
+        console.log('Item não encontrado no carrinho');
+       return;
+
+    console.log('indexFound', indexFound);
+}
+
+// 3. se o item existir, decrementar a quantidade
+if (userCart[indexFound].quantity > 1) {
+    userCart[indexFound].quantity--;
+    return;
+}
+
+// 4. se a quantidade for 1, remover o item do carrinho
+if (userCart[indexFound].quantity == 1) {
+    userCart.splice(indexFound, 1);
+    console.log('Item removido do carrinho');
     
+    
+    return ;
 }
-}
+console.log('Chamando calculateTotal...');
+await calculateTotal(userCart);
+console.log('Carrinho atualizado:', userCart);
 
+return userCart;
+
+}
 
 
 
 
 //calcular o toral do carrinho
 
-async function calculateTotal(userCart) {
-    console.log('\n Shopee cart TOTAL: ');
-    const result = userCart.reduce((total, item) => total + item.subtotal(), 0);
 
-    console.log(` 🎁Total: ${result}`);
-}
 
 async function displayCart(userCart) {
     
      userCart.forEach((item, index) => {
-        console.log(`${index + 1} - Produto: ${item.name}  | Preço: ${item.price} reais | Quantidade: ${item.quantity} | SubTotal: ${item.subtotal()} reais.`);
+        console.log(`${index + 1} - Produto: ${item.name}  | Preço: ${item.price} reais | Quantidade: ${item.quantity} | SubTotal: ${item.subtotal} reais.`);
     });
 
     calculateTotal(userCart);
+}
+
+async function calculateTotal(userCart) {
+    console.log('\n Shopee cart TOTAL: ');
+    const result = userCart.reduce((total, item) => total + item.subtotal, 0);
+
+    console.log(` 🎁Total: ${result}`);
 }
 
 
